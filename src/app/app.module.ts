@@ -13,7 +13,7 @@ import { PageNotFound404Component } from "./components/page-not-found404/page-no
 import { NgxSpinnerModule } from "ngx-spinner"
 import { paymentHttpInterceptorProvider } from "./interceptor"
 // export const endPoint: string = "http://localhost:5000"
-export const endPoint: string = "https://gilang-final-project-2.herokuapp.com"
+export const endPoint: string = "https://final-project-csharp.herokuapp.com"
 @NgModule({
   declarations: [
     AppComponent,
