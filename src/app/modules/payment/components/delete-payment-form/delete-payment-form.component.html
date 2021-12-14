@@ -1,0 +1,35 @@
+<div class="modal is-active" id="modal">
+	<div class="modal-background animate__animated animate__fadeIn"></div>
+	<div
+		class="modal-card animate__animated animate__fadeInDown"
+		style="width: 300px"
+	>
+		<header class="modal-card-head">
+			<p class="modal-card-title">Warning !!!</p>
+		</header>
+		<section class="modal-card-body has-text-centered">
+			<img src="../../../../../assets/warning.png" width="200px" />
+			<h5 class="has-text-weight-bold">Delete this payment ?</h5>
+			<br />
+			<p>Owner&nbsp;: {{ payment?.cardOwnerName }}</p>
+			<p>Number&nbsp;:{{ payment?.cardNumber }}</p>
+		</section>
+		<footer class="modal-card-foot">
+			<button
+        [disabled]="isButtonDisabled"
+				(click)="deletePayment()"
+				class="button is-danger is-fullwidth"
+				type="button"
+			>
+				Delete Now
+			</button>
+			<button
+				(click)="closeModal()"
+				class="button is-fullwidth"
+				type="button"
+			>
+				Cancel
+			</button>
+		</footer>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+import {Component} from "@angular/core"
+import { Router } from "@angular/router"
+import { UserService } from "src/app/modules/auth/services/user.service"
+
+@Component({
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
+})
+export class NavbarComponent  {
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {
+  }
+
+  isLoggedIn = (): boolean => this.userService.isLoggedIn()
+
+  logout(): void {
+    this.userService.logout()
+  }
+
+}

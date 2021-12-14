@@ -1,0 +1,30 @@
+.modal-card-foot{
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  /*padding: $modal-card-head-padding*/
+  position: relative;
+}
+
+.card {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  box-shadow: none;
+}
+
+.card-header {
+  box-shadow: none;
+}
+
+.hr.divider {
+  border: 2px solid red;
+}
+
+
+:root {
+  --animate-duration: 400ms;
+  --animate-delay: 0.9s;
+}

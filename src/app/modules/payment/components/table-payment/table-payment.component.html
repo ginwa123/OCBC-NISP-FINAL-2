@@ -1,0 +1,85 @@
+<div>
+  <div class="is-size-3 has-text-centered has-background-light">
+  PAYMENT MANAGEMENT
+  </div>
+  <div class="columns is-centered mt-5">
+    <div class="column is-4">
+      <app-search-payment-form (inputSearchUserEvent)="searchPayment($event)"></app-search-payment-form>
+    </div>
+    <div class="column is-4">
+      <button (click)="setOrderBy()" class="button is-primary is-fullwidth" type="button">
+        <span class="icon-text">
+          <span class="icon">
+            <i class="material-icons">sort</i>
+          </span>
+        <span>{{ orderBy | uppercase }}</span>
+      </span>
+      </button>
+    </div>
+    <div class="column is-4">
+      <button
+        (click)="goToCreateComponent()"
+        class="button is-primary is-fullwidth"
+        type="button"
+      >
+        Add Payment
+      </button>
+    </div>
+  </div>
+</div>
+
+<table class="table is-bordered is-hoverable mx-auto mt-5">
+  <thead>
+  <tr style="cursor: pointer">
+    <th class="has-text-centered has-icons-right">NO</th>
+    <th>ID</th>
+    <th>CARD OWNER NAME</th>
+    <th>CARD NUMBER</th>
+    <th>EXPIRED DATE</th>
+    <th>TOOLS</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let payment of payments; let i = index">
+    <th class="has-text-centered">
+      {{ i + 1 }}
+    </th>
+    <td>{{ payment.paymentDetailId }}</td>
+    <td>{{ payment.cardOwnerName }}</td>
+    <td>{{ payment.cardNumber }}</td>
+    <td>{{ payment.expirationDate | date: "MM/dd" }}</td>
+    <td>
+      <p class="buttons is-centered">
+        <button
+          (click)="
+									goToDeleteComponent(payment.paymentDetailId)
+								"
+          class="button is-small"
+        >
+								<span class="icon">
+									<span
+                    class="material-icons"
+                    style="color: red"
+                  >delete</span
+                  >
+								</span>
+        </button>
+        <button
+          (click)="
+									goToUpdateComponent(payment.paymentDetailId)
+								"
+          class="button is-small"
+        >
+								<span class="icon">
+									<i
+                    class="material-icons"
+                    style="color: orange"
+                  >edit</i
+                  >
+								</span>
+        </button>
+      </p>
+    </td>
+  </tr>
+  </tbody>
+</table>

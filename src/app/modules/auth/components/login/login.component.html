@@ -1,0 +1,128 @@
+<br>
+<br>
+<br>
+<br>
+<div class="mx-auto" style="width: 400px">
+	<div class="card">
+    <div class="card-header ">
+      <p class="card-header-title is-size-2 is-centered">Login</p>
+    </div>
+		<form [formGroup]="loginForm" (submit)="login()">
+			<section class="card-content">
+				<div class="field">
+					<label class="label">Email</label>
+					<div class="control has-icons-left">
+						<input
+							class="input"
+							formControlName="email"
+							placeholder="e.g. alexsmith@gmail.com"
+							type="email"
+						/>
+						<span class="icon is-small is-left">
+							<i class="material-icons" style="color: green"
+								>email</i
+							>
+						</span>
+					</div>
+					<div
+						*ngIf="email.invalid && (email.dirty || email.touched)"
+					>
+						<p
+							*ngIf="email.errors?.required"
+							class="help is-danger"
+						>
+							Email is required
+						</p>
+						<p *ngIf="email.errors?.email" class="help is-danger">
+							Wrong email
+						</p>
+					</div>
+				</div>
+				<div class="field">
+					<label class="label">Password</label>
+					<div class="control has-icons-left">
+						<input
+							class="input"
+							formControlName="password"
+							placeholder="Password"
+							type="password"
+						/>
+						<div class="icon is-small is-left">
+							<i class="material-icons" style="color: black"
+								>lock</i
+							>
+						</div>
+					</div>
+					<div *ngIf="password.invalid && (password.dirty || password.touched)">
+						<p
+							*ngIf="password.errors?.required"
+							class="help is-danger"
+						>
+							Password is required
+						</p>
+						<p
+							*ngIf="password.errors?.minlength"
+							class="help is-danger"
+						>
+							Minimal password is 6
+						</p>
+						<p
+							*ngIf="password.errors?.atLeastOneNumber"
+							class="help is-danger"
+						>
+						Passwords must have at least  one number
+						</p>
+						<p
+							*ngIf="password.errors?.atLeastOneUpperCase"
+							class="help is-danger"
+						>
+							Passwords must have at least one uppercase
+						</p>
+						<p
+							*ngIf="password.errors?.atLeastOneLowerCase"
+							class="help is-danger"
+						>
+							Passwords must have at least one lowercase
+						</p>
+            <p
+							*ngIf="password.errors?.atLeastOneNonAlphaNumeric"
+							class="help is-danger"
+						>
+							Passwords must have at least one non alphanumeric character
+						</p>
+
+					</div>
+				</div>
+
+				<div class="columns mt-2">
+					<div class="column">
+						<button
+							type="submit"
+							class="column button is-primary is-fullwidth"
+						>
+							Login
+						</button>
+					</div>
+					<div class="column">
+						<button
+							(click)="goToRegisterComponent()"
+							type="button"
+							class="column button is-fullwidth"
+						>
+							Don't have account ?
+						</button>
+					</div>
+				</div>
+			</section>
+		</form>
+	</div>
+	<div
+		*ngIf="failedLoginMessage !== undefined"
+		class="notification is-danger mt-5"
+	>
+		<button (click)="closeNotification()" class="delete"></button>
+		<p>
+			{{ failedLoginMessage }}
+		</p>
+	</div>
+</div>

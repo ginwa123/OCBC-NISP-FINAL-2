@@ -1,0 +1,44 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+// Set your brand colors
+$primary: #2e7d32;
+$primaryDark: #005005;
+
+$primarySecondary: #F0BB62;
+$white: #fff;
+$red: #ff0000;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$primary: $primary;
+$primary-invert: $white;
+$success: $primarySecondary;
+$danger: $red;
+$modal-card-head-background-color: $primaryDark;
+$modal-card-title-color: $white;
+$input-focus-border-color: $primary;
+$card-radius: 1rem;
+
+
+
+
+
+// Update some of Bulma's component variables
+//$body-background-color: $beige-lighter;
+//$control-border-width: 2px;
+//$input-border-color: transparent;
+//$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/modal.sass";
+@import "../node_modules/bulma/sass/components/card.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+
