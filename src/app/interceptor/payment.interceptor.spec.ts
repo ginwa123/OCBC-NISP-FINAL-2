@@ -1,15 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { PaymentInterceptor } from './payment.interceptor';
+import { PaymentInterceptor } from "./payment.interceptor";
 
-describe('PaymentInterceptor', () => {
+describe("PaymentInterceptor", () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       PaymentInterceptor
       ]
   }));
 
-  it('should be created', () => {
+  it("should be created", () => {
     const interceptor: PaymentInterceptor = TestBed.inject(PaymentInterceptor);
     expect(interceptor).toBeTruthy();
   });

@@ -6,7 +6,7 @@ import { DeletePaymentFormComponent } from "./components/delete-payment-form/del
 import { ReactiveFormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http"
 import { TablePaymentComponent } from "./components/table-payment/table-payment.component";
-import { SearchPaymentFormComponent } from './components/search-payment-form/search-payment-form.component'
+import { SearchPaymentFormComponent } from "./components/search-payment-form/search-payment-form.component"
 
 @NgModule({
   declarations: [

@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PageNotFound404Component } from './page-not-found404.component';
+import { PageNotFound404Component } from "./page-not-found404.component";
 
-describe('PageNotFound404Component', () => {
+describe("PageNotFound404Component", () => {
   let component: PageNotFound404Component;
   let fixture: ComponentFixture<PageNotFound404Component>;
 
@@ -19,7 +19,7 @@ describe('PageNotFound404Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

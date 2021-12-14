@@ -3,9 +3,9 @@ import {FormControl} from "@angular/forms"
 import {Subscription} from "rxjs"
 
 @Component({
-  selector: 'app-search-payment-form',
-  templateUrl: './search-payment-form.component.html',
-  styleUrls: ['./search-payment-form.component.css']
+  selector: "app-search-payment-form",
+  templateUrl: "./search-payment-form.component.html",
+  styleUrls: ["./search-payment-form.component.css"]
 })
 export class SearchPaymentFormComponent implements OnInit, OnDestroy {
   @Output() inputSearchUserEvent: EventEmitter<string> = new EventEmitter<string>()

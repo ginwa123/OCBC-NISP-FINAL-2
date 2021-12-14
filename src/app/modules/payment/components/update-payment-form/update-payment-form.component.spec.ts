@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UpdatePaymentFormComponent } from './update-payment-form.component';
+import { UpdatePaymentFormComponent } from "./update-payment-form.component";
 
-describe('UpdatePaymentFormComponent', () => {
+describe("UpdatePaymentFormComponent", () => {
   let component: UpdatePaymentFormComponent;
   let fixture: ComponentFixture<UpdatePaymentFormComponent>;
 
@@ -19,7 +19,7 @@ describe('UpdatePaymentFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

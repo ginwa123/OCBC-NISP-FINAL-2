@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TablePaymentComponent } from './table-payment.component';
+import { TablePaymentComponent } from "./table-payment.component";
 
-describe('TablePaymentComponent', () => {
+describe("TablePaymentComponent", () => {
   let component: TablePaymentComponent;
   let fixture: ComponentFixture<TablePaymentComponent>;
 
@@ -19,7 +19,7 @@ describe('TablePaymentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

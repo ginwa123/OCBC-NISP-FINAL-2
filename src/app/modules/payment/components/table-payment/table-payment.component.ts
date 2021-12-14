@@ -66,7 +66,7 @@ export class TablePaymentComponent implements OnInit, OnDestroy {
     this.payments = this.paymentService.searchPayment(this.sortType, this.orderBy, this.searchKeyword)
   }
 
-  searchPayment(value: string) {
+  searchPayment(value: string): void {
     console.log(value)
     this.searchKeyword = value
     this.payments = this.paymentService.searchPayment(this.sortType, this.orderBy, this.searchKeyword)
