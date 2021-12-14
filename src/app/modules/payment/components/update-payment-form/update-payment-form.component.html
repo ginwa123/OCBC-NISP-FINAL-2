@@ -1,175 +1,172 @@
 <div class="modal is-active" id="modal">
-	<div class="modal-background animate__animated animate__fadeIn"></div>
-	<div class="modal-card animate__animated animate__fadeInDown">
-		<header class="modal-card-head">
-			<p class="modal-card-title">Update Payment</p>
-		</header>
-		<div style="overflow: scroll">
-			<form (submit)="updatePayment()" [formGroup]="updateFormGroup">
-				<section class="modal-card-body">
-					<div class="columns is-mobile">
-						<div class="column">
-							<div class="field">
-								<label class="label">Card Owner Name</label>
-								<div class="control has-icons-left">
-									<input
-										class="input"
-										formControlName="cardOwnerName"
-										placeholder="e.g Alex"
-										type="text"
-									/>
-									<div class="icon is-small is-left">
-										<i
-											class="material-icons"
-											style="color: green"
-										>
-											account_circle
-										</i>
-									</div>
-								</div>
-								<div
-									*ngIf="
+  <div class="modal-background animate__animated animate__fadeIn"></div>
+  <div class="modal-card animate__animated animate__fadeInDown">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Update Payment</p>
+    </header>
+    <div style="overflow: scroll">
+      <form (submit)="updatePayment()" [formGroup]="updateFormGroup">
+        <section class="modal-card-body">
+          <div class="columns is-mobile">
+            <div class="column">
+              <div class="field">
+                <label class="label">Card Owner Name</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    formControlName="cardOwnerName"
+                    placeholder="e.g Alex"
+                    type="text"
+                  />
+                  <div class="icon is-small is-left">
+                    <i
+                      class="material-icons"
+                      style="color: green"
+                    >
+                      account_circle
+                    </i>
+                  </div>
+                </div>
+                <div
+                  *ngIf="
 										cardOwnerName.invalid &&
 										(cardOwnerName.dirty ||
 											cardOwnerName.touched)
 									"
-								>
-									<p
-										*ngIf="cardOwnerName.errors?.required"
-										class="help is-danger"
-									>
-										Card owner name is required
-									</p>
-									<p
-										*ngIf="cardOwnerName.errors?.maxLength"
-										class="help is-danger"
-									>
-										Max card owner name is 100
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="column">
-							<div class="field">
-								<label class="label">Card Number</label>
-								<div class="control has-icons-left">
-									<input
-										class="input"
-										formControlName="cardNumber"
-										placeholder="4444xxxxx"
-										type="number"
-									/>
-									<div class="icon is-small is-left">
-										<i
-											class="material-icons"
-											style="color: green"
-										>
-											format_list_numbered
-										</i>
-									</div>
-								</div>
-								<div
-									*ngIf="
+                >
+                  <p
+                    *ngIf="cardOwnerName.errors?.required"
+                    class="help is-danger"
+                  >
+                    Card owner name is required
+                  </p>
+                  <p
+                    *ngIf="cardOwnerName.errors?.maxLength"
+                    class="help is-danger"
+                  >
+                    Max card owner name is 100
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">Card Number</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    formControlName="cardNumber"
+                    placeholder="4444xxxxx"
+                    type="number"
+                  />
+                  <div class="icon is-small is-left">
+                    <i
+                      class="material-icons"
+                      style="color: green"
+                    >
+                      format_list_numbered
+                    </i>
+                  </div>
+                </div>
+                <div
+                  *ngIf="
 										cardNumber.invalid &&
 										(cardNumber.dirty || cardNumber.touched)
 									"
-								>
-									<p
-										*ngIf="cardNumber.errors?.required"
-										class="help is-danger"
-									>
-										Card number is required
-									</p>
+                >
+                  <p
+                    *ngIf="cardNumber.errors?.required"
+                    class="help is-danger"
+                  >
+                    Card number is required
+                  </p>
 
-									<p
-										*ngIf="cardNumber.errors?.max"
-										class="help is-danger"
-									>
-										Max Card number value is 10000000
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="columns is-mobile">
-						<div class="column">
-							<div class="field">
-								<label class="label">Security Code</label>
-								<div class="control has-icons-left">
-									<input
-										class="input"
-										formControlName="securityCode"
-										placeholder="Security Code"
-										type="password"
-									/>
-									<div class="icon is-small is-left">
-										<i
-											class="material-icons"
-											style="color: black"
-											>lock</i
-										>
-									</div>
-								</div>
-								<div
-									*ngIf="
+                  <p
+                    *ngIf="cardNumber.errors?.max"
+                    class="help is-danger"
+                  >
+                    Max Card number value is 10000000
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns is-mobile">
+            <div class="column">
+              <div class="field">
+                <label class="label">Security Code</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    formControlName="securityCode"
+                    placeholder="Security Code"
+                    type="password"
+                  />
+                  <div class="icon is-small is-left">
+                    <i
+                      class="material-icons"
+                      style="color: black"
+                    >lock</i
+                    >
+                  </div>
+                </div>
+                <div
+                  *ngIf="
 										securityCode.invalid &&
 										(securityCode.dirty ||
 											securityCode.touched)
 									"
-								>
-									<p
-										*ngIf="securityCode.errors?.required"
-										class="help is-danger"
-									>
-										Security Code is required
-									</p>
-									<p
-										*ngIf="securityCode.errors?.maxLength"
-										class="help is-danger"
-									>
-										Max security code is 100
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="column">
-							<div class="field">
-								<label class="label">ExpiredDate</label>
-								<div class="control">
-									<input
-										class="input"
-										formControlName="expirationDate"
-										placeholder="ExpiredDate"
-										type="date"
-									/>
-								</div>
-								<div
-									*ngIf="
+                >
+                  <p
+                    *ngIf="securityCode.errors?.required"
+                    class="help is-danger"
+                  >
+                    Security Code is required
+                  </p>
+                  <p
+                    *ngIf="securityCode.errors?.maxLength"
+                    class="help is-danger"
+                  >
+                    Max security code is 100
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">ExpiredDate</label>
+                <div class="control">
+                  <ng2-flatpickr
+                    placeholder="Pick a date!" [config]="datePickerOptions"
+                    formControlName="expirationDate"></ng2-flatpickr>
+                </div>
+                <div
+                  *ngIf="
 										expirationDate.invalid &&
 										(expirationDate.dirty ||
 											expirationDate.touched)
 									"
-								>
-									<p
-										*ngIf="expirationDate.errors?.required"
-										class="help is-danger"
-									>
-										ExpiredDate is required
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<footer class="modal-card-foot field is-grouped">
-					<button [disabled]="updateFormGroup.invalid" class="button is-success" type="submit">
-						Update Now
-					</button>
-					<button (click)="closeModal()" type="button" class="button">
-						Cancel
-					</button>
-				</footer>
-			</form>
-		</div>
-	</div>
+                >
+                  <p
+                    *ngIf="expirationDate.errors?.required"
+                    class="help is-danger"
+                  >
+                    ExpiredDate is required
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot field is-grouped">
+          <button [disabled]="updateFormGroup.invalid" class="button is-success" type="submit">
+            Update Now
+          </button>
+          <button (click)="closeModal()" type="button" class="button">
+            Cancel
+          </button>
+        </footer>
+      </form>
+    </div>
+  </div>
 </div>

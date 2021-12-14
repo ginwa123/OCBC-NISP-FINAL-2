@@ -1,27 +1,31 @@
-import { Component, ElementRef, OnDestroy } from "@angular/core"
-import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms"
-import { Router } from "@angular/router"
-import { Subscription } from "rxjs"
-import { animateCSS } from "../../helpers/animate-css"
-import { Payment } from "../../models/payment"
-import { PaymentResponse } from "../../models/payment-response"
-import { PaymentService } from "../../services/payment.service"
+import {Component, ElementRef, OnDestroy, OnInit} from "@angular/core"
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms"
+import {Router} from "@angular/router"
+import {Subscription} from "rxjs"
+import {animateCSS} from "../../helpers/animate-css"
+import {Payment} from "../../models/payment"
+import {PaymentResponse} from "../../models/payment-response"
+import {PaymentService} from "../../services/payment.service"
+import {FlatpickrOptions} from "ng2-flatpickr"
+import {convert} from "../../helpers/convert-date"
+
 
 @Component({
   selector: "app-create-payment-form",
   templateUrl: "./create-payment-form.component.html",
   styleUrls: ["./create-payment-form.component.css"]
 })
-export class CreatePaymentFormComponent implements OnDestroy {
+export class CreatePaymentFormComponent implements  OnDestroy {
 
 
-  constructor (
+  constructor(
     private paymentService: PaymentService,
     private router: Router,
     private elementRef: ElementRef
   ) {
 
   }
+
   createFormGroup: FormGroup = new FormGroup({
     cardOwnerName: new FormControl("", [
       Validators.required,
@@ -42,16 +46,24 @@ export class CreatePaymentFormComponent implements OnDestroy {
   expirationDate: AbstractControl = this.createFormGroup.controls.expirationDate
   securityCode: AbstractControl = this.createFormGroup.controls.securityCode
   createPaymentSubscription: Subscription | undefined
-  test: boolean = false
+  datePickerOptions: FlatpickrOptions = {
+    dateFormat: "Y-M-D H:i",
+    altFormat: "m/d",
+    altInput: true
+
+  }
+
+
   createPayment(): void {
     if (!this.createFormGroup.valid) {
       this.createFormGroup.markAllAsTouched()
       return
     }
+    const date = convert(this.expirationDate.value[0])
     const payment: Payment = {
       cardNumber: this.cardNumber.value,
       cardOwnerName: this.cardOwnerName.value,
-      expirationDate: this.expirationDate.value,
+      expirationDate: date,
       securityCode: this.securityCode.value
     }
     this.createPaymentSubscription?.unsubscribe()
@@ -77,8 +89,6 @@ export class CreatePaymentFormComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.createPaymentSubscription?.unsubscribe()
   }
-
-
 
 
 }

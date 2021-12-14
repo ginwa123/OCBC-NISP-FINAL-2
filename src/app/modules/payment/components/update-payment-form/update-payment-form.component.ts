@@ -1,12 +1,14 @@
 import { DatePipe } from "@angular/common"
-import { Component, ElementRef, OnDestroy, OnInit } from "@angular/core"
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from "@angular/core"
 import { AbstractControl, FormControl, FormControlName, FormGroup, Validators } from "@angular/forms"
 import { ActivatedRoute, Router } from "@angular/router"
 import { Subscription } from "rxjs"
 import { animateCSS } from "../../helpers/animate-css"
+import {convert} from "../../helpers/convert-date"
 import { Payment } from "../../models/payment"
 import { PaymentResponse } from "../../models/payment-response"
 import { PaymentService } from "../../services/payment.service"
+
 
 @Component({
   selector: "app-update-payment-form",
@@ -21,7 +23,7 @@ export class UpdatePaymentFormComponent implements OnInit, OnDestroy {
     private router: Router,
     private datePipe: DatePipe,
     activatedRouter: ActivatedRoute,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
   ) {
     this.paramsId = activatedRouter.snapshot.params.id
   }
@@ -48,17 +50,25 @@ export class UpdatePaymentFormComponent implements OnInit, OnDestroy {
   payment: Payment | undefined = undefined
   getPaymentSubscription: Subscription | undefined
   updatePaymentSubscription: Subscription | undefined
+  datePickerOptions= {
+    dateFormat: "Y-M-D",
+    altFormat: "m/d",
+    altInput: true
+
+  }
+
+
 
   ngOnInit(): void {
     this.getPayment(this.paramsId)
+    // console.log(this.elementRef.nativeElement.querySelector("#datePicker"))
   }
 
   setUpdateForm(): void {
-    const dateString: string | undefined = this.payment?.expirationDate
     this.cardOwnerName.setValue(this.payment?.cardOwnerName)
     this.cardNumber.setValue(this.payment?.cardNumber)
     this.securityCode.setValue(this.payment?.securityCode)
-    this.expirationDate.setValue(this.datePipe.transform(dateString, "yyyy-MM-dd"))
+    // this.expirationDate.setValue(new Date(dateString as string))
   }
 
   getPayment(id: number): void {
@@ -78,11 +88,12 @@ export class UpdatePaymentFormComponent implements OnInit, OnDestroy {
       this.updateFormGroup.markAllAsTouched()
       return
     }
+    const date = convert(this.expirationDate.value[0])
     const payment: Payment = {
-      paymentDetailId: this.paramsId,
+      paymentDetailId: this.payment?.paymentDetailId,
       cardNumber: this.cardNumber.value,
       cardOwnerName: this.cardOwnerName.value,
-      expirationDate: this.expirationDate.value,
+      expirationDate: date,
       securityCode: this.securityCode.value
     }
     this.updatePaymentSubscription = this.paymentService.updatePayment(payment)
@@ -107,6 +118,4 @@ export class UpdatePaymentFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.getPaymentSubscription?.unsubscribe()
   }
-
-
 }

@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http"
 import { TablePaymentComponent } from "./components/table-payment/table-payment.component";
 import { SearchPaymentFormComponent } from "./components/search-payment-form/search-payment-form.component"
+import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { SearchPaymentFormComponent } from "./components/search-payment-form/sea
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2FlatpickrModule
+
   ],
   exports: [
     TablePaymentComponent
